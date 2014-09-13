@@ -109,6 +109,11 @@ textarea {
     src: url("../fonts/National-Regular.otf") format("opentype");
 }
 
+@font-face{
+        font-family: 'National-Bold';
+    src: url("../fonts/National-Bold.otf") format("opentype");
+}
+
 body{
     width: 100%;
     height: 100%;
@@ -138,35 +143,48 @@ body{
     top: 16px;
     bottom: 16px;
     border-radius: 1px;
+    -webkit-box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow:    0px 3px 3px 0px rgba(50, 50, 50, 0.2);
+    box-shadow:         0px 3px 3px 0px rgba(50, 50, 50, 0.2);
     display: block;
+}
+
+.infostyles{
+    position: relative;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    border-bottom: solid 1px #ededed;
+    color: #3f4958;
+    font-family: 'National-Bold';
+    font-size: 1.2em;
+    text-shadow: 0px 1px 1px rgba(150, 150, 150, 0.4);
+}
+
+.stylesoverride{
+    font-family: 'National-Regular';
+    border-radius: 1px;
 }
 
 #name{
     background-color: #ffffff;
-    position: relative;
-    width: 100%;
-    height: 100px;
 }
 
 #price{
     background-color: #f5f6f7;
-    position: relative;
-    width: 100%;
-    height: 100px;
 }
 
-#dates{
+#dateissued{
     background-color: #ffffff;
-    position: relative;
-    width: 100%;
-    height: 100px;
+}
+
+#datepaid{
+    background-color: #f5f6f7;
 }
 
 #payee{
-    background-color: #f5f6f7;
-    position: relative;
-    width: 100%;
-    height: 100px;
+    background-color: #ffffff;
 }
 
 #closebox{
@@ -186,9 +204,9 @@ body{
     opacity: 1.0;
     display: block;
     z-index: 10;
-    -webkit-box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 1);
-    -moz-box-shadow:    0px 1px 2px 0px rgba(50, 50, 50, 1);
-    box-shadow:         0px 1px 2px 0px rgba(50, 50, 50, 1);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 1px 2px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 1px 2px 0px rgba(50, 50, 50, 0.5);
     cursor: pointer;
 
 }
