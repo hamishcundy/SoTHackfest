@@ -20,10 +20,25 @@ app.get("/Invoices", function (req, res) {
             log.error(err);
             return res.json(400, {error: 'Unable to contact Xero'});
         }
-        var file = fs.createWriteStream("test.txt");
-        res.pipe(file);
         return res.json(200, json);
     });
 });
-
+app.get("/Payments", function (req, res) {
+    xero.call('GET', '/Payments', null, function(err, json) {
+        if (err) {
+            log.error(err);
+            return res.json(400, {error: 'Unable to contact Xero'});
+        }
+        return res.json(200, json);
+    });
+});
+app.get("/Receipts", function (req, res) {
+    xero.call('GET', '/Receipts', null, function(err, json) {
+        if (err) {
+            log.error(err);
+            return res.json(400, {error: 'Unable to contact Xero'});
+        }
+        return res.json(200, json);
+    });
+});
 app.listen(9090, function () { console.log("up on 9090") });
