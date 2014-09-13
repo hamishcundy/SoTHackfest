@@ -2,7 +2,7 @@
 $( document ).ready(function() {
 
 
-$( ".item" ).click(function() {
+$( ".invoice" ).click(function() {
   $("#dialoguebox").css({ display: 'block' });
   $("#closebox").css({ display: 'block' });
 });
