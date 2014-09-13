@@ -257,7 +257,7 @@ body{
     font-size: 1.2em;
 }
 
-.datepaidtitle{
+.dateduetitle{
 /*    border: red solid 1px;*/
     position: absolute;
     font-family: 'National-Regular';
@@ -277,7 +277,7 @@ body{
     padding-right: 2px;
 }
 
-.dateissuedtitle{
+.dateamounttitle{
 /*    border: red solid 1px;*/
     position: absolute;
     font-family: 'National-Regular';
@@ -287,7 +287,7 @@ body{
     margin: auto 0;
     top: 0;
     bottom: 0;
-    right: 31%;
+    right: 29%;
     margin-right: 0px;
     color: white;
     float: left;
@@ -416,7 +416,7 @@ to {transform: rotate(359deg);}
     text-align: center;
 }
 
-.datepaidstring{
+.dateduestring{
 /*    border: solid red 1px;*/
     position: absolute;
     width: auto;
@@ -433,7 +433,7 @@ to {transform: rotate(359deg);}
     padding-right: 2px;
 }
 
-.dateissuedstring{
+.dateamountstring{
 /*    border: solid red 1px;*/
     position: absolute;
     width: auto;
@@ -442,7 +442,7 @@ to {transform: rotate(359deg);}
     margin: auto 0;
     top: 0;
     bottom: 0;
-    right: 26%;
+    right: 24%;
     margin-right: 5%;
     color: white;
     float: left;
