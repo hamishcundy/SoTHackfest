@@ -28,17 +28,16 @@
 
              for(var j = 0; j < invoices.length; j++){
                 var date1 = moment(invoices[j].Date);
+              
                 $("#invoices").append( '<div class="invoice">'+
                 '<div class="item">' + invoices[j].Contact.Name +
                ' </div>' +
                 '<div class="tick">'+
                    ' <img src="img/tick.svg" width="20px" height="20px" />'+
                 '</div>'+
-               ' <div class="date">' +
-
-                   date1.format('DD-MM-YYYY') +
-
-                '</div>'+
+               '<div class="dateissuedstring">' + date1.format('DD-MM-YYYY') + '</div>' +
+           ' <div class="datepaidstring">' + date1.format('DD-MM-YYYY') + '</div>' +
+  
             '</div>');
                 console.log(invoices[j].Contact.Name);
 
@@ -129,15 +128,7 @@
             <div class="spinner">
             </div>
 
-        <div class="invoice">
-            <div class="item">Item</div>
-            <div class="tick">
-            <img src="img/tick.svg" width="20px" height="20px" />
-            </div>
-            <div class="dateissuedstring">11.11.11</div>
-            <div class="datepaidstring">Unpaid</div>
-            </div>               
-        </div>
+        
 
         </div>
 
