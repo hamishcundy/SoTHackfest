@@ -164,6 +164,7 @@ body{
 /*    border: solid blue 1px;*/
     position: relative;
     width: 60%;
+    min-width: 500px;
     height: 100%;
     margin: auto auto;
     left: 0;
@@ -183,6 +184,7 @@ body{
     border-bottom: 20px solid transparent;
     z-index: 99;
     opacity: 0.2;
+    margin-left: 10px;
 }
 
 #triangleright {
@@ -196,6 +198,7 @@ body{
     border-bottom: 20px solid transparent;
     z-index: 99;
     opacity: 0.2;
+    margin-right: 10px;
 }
 
 #invoicesheader{
