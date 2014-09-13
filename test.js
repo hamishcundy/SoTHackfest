@@ -12,6 +12,7 @@ var app = express();
 app.get("/test", function (req, res) {
 	xero.call('GET', '/Users', null, function(err, json) {
         if(users == null){
+            console.log('Users called');
             if (err) {
                 log.error(err);
                 return res.json(400, {error: 'Unable to contact Xero'});
@@ -27,6 +28,7 @@ app.get("/test", function (req, res) {
 app.get("/Invoices", function (req, res) {
 	xero.call('GET', '/Invoices', null, function(err, json) {
         if(invoices == null){
+            console.log('Invoices called');
             if (err) {
                 log.error(err);
                 return res.json(400, {error: 'Unable to contact Xero'});
@@ -42,6 +44,7 @@ app.get("/Invoices", function (req, res) {
 app.get("/Payments", function (req, res) {
     xero.call('GET', '/Payments', null, function(err, json) {
         if(payments == null){
+            console.log('Payments called');
             if (err) {
                 log.error(err);
                 return res.json(400, {error: 'Unable to contact Xero'});
@@ -57,6 +60,7 @@ app.get("/Payments", function (req, res) {
 app.get("/Receipts", function (req, res) {
     xero.call('GET', '/Receipts', null, function(err, json) {
         if(receipts == null){
+            console.log('Receipts called');
             if (err) {
                 log.error(err);
                 return res.json(400, {error: 'Unable to contact Xero'});
