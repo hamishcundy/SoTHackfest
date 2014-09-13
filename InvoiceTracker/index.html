@@ -20,9 +20,9 @@
         invoices = [];
         $.getJSON('http://hamishcundy.no-ip.biz:9090/Invoices', function(data) {
             console.log(data);
-             for (var i = 0; i < data.Invoices.Invoice.length; i++) {
-                invoices.push(data.Invoices.Invoice[i]);
-                console.log('added ' + data.Invoices.Invoice[i]);
+             for (var i = 0; i < data.Response.Invoices.Invoice.length; i++) {
+                invoices.push(data.Response.Invoices.Invoice[i]);
+                console.log('added ' + data.Response.Invoices.Invoice[i]);
              }
         });
         </script>
