@@ -31,11 +31,17 @@
              for(var j = 0; j < invoices.length; j++){
                 var date1 = moment(invoices[j].DueDate);
                 var amt = invoices[j].Total;
+                var tickstring;
+                if(invoices[j].Status == 'PAID'){
+                    tickstring = '<div class="tick"><img src="img/tick.svg" width="20px" height="20px" /></div>';
+                }else{
+                    tickstring = '<div class="tick"><img src="img/untick.svg" width="20px" height="20px" /></div>';
+                }
                 $("#invoices").append( '<div class="invoice">'+
                 '<div class="item">' + invoices[j].Contact.Name +
                ' </div>' +
-                '<div class="tick"><img src="img/tick.svg" width="20px" height="20px" /></div>'+
-               '<div class="dateissuedstring">' +  amt+ '</div>' +
+                tickstring+
+               '<div class="dateissuedstring">$' +  amt+ '</div>' +
            ' <div class="datepaidstring">' + date1.format('DD-MM-YYYY') + '</div>' +
   
             '</div>');
