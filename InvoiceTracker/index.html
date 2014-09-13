@@ -37,8 +37,10 @@
                 if(mq.matches) {
                     // the width of browser is more then 800px
                 } else {
-                    name = name.substring(0, 10);
+                    if(name.length > 13){
+                    name = name.substring(0, 13);
                     name = name + '..';
+                    }
                 }
                 if(invoices[j].Status == 'PAID'){
                     tickstring = '<div class="tick"><img src="img/tick.svg" width="20px" height="20px" /></div>';
