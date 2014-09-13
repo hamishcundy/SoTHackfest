@@ -1,0 +1,156 @@
+<!DOCTYPE>
+
+<html>
+
+	<head>
+
+	<link href="c3.css" rel="stylesheet" type="text/css">
+	<script src="d3.js" charset="utf-8"></script>
+	<script src="c3.min.js"></script>
+	<script src="jquery.js"></script>
+
+	<script type="text/javascript">
+	
+	// function searchInvoices (){
+	// 	int numInvoices;
+	// 	for ()
+	// 		if ()
+	// }
+
+	// date 
+	// function minInvoiceDate (){
+	// 	for (var minDate = Things.length - 1; i >= 0; minDate--) {
+	// 		if (date < oldDate) {
+	// 			oldDate = date;
+	// 		};
+	// 	};
+	// }
+	
+	// function maxInvoiceDate (){
+	// 	for (var i = Things.length - 1; i >= 0; i--) {
+	// 		if (date is more than) {
+
+	// 		};
+	// 	};
+	// }
+	
+	
+	function getDateBounds(invoices) {
+		var min = new Date(invoices[0].Date);
+		var max = new Date(invoices[0].Date);
+		for( var i = 0; i < invoices.length; i++){
+			if (new Date(invoices[i].Date) > max){
+				max = new Date(invoices[i].Date);
+			}
+			if (new Date(invoices[i].Date) < min){
+				min = new Date(invoices[i].Date);
+			}
+		}
+
+		return {min:min, max:max}
+	}
+
+	function getInvoices ()  {
+
+		var invoiceTotal = [];
+		var invoiceDate = [];
+		$.get("/invoices.json", function (res) {
+
+			//var invoices = res.Response.Invoices.Invoice; 
+			var invoices = [	
+				{ Date: "2014/01/02", DueDate:null, AmountPaid: 0, AmountDue:100, Total: 100, FullyPaidOnDate: null },
+				{ Date: "2014/01/03", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: null },
+				{ Date: "2014/01/04", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: null },
+				{ Date: "2014/01/05", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: null },
+				{ Date: "2014/01/06", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: null },
+				{ Date: "2014/01/07", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: null },
+				{ Date: "2014/01/08", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: null },
+			];
+
+			console.log(getDateBounds(invoices));
+
+			var result = []
+			for(var i = 0, length = invoices.length; i < length; i++) {
+				result.push({
+					Date: invoices[i].Date,
+					DueDate: invoices[i].DueDate,
+					AmountPaid: invoices[i].AmountPaid,
+					AmountDue: invoices[i].AmountDue,
+					InvoiceTotal: invoices[i].Total,
+					FullyPaidOnDate : invoices[i].FullyPaidOnDate 
+				})
+			}
+			console.log(result);
+			
+			invoices = invoices.map(function (invoice) {
+							//console.log(invoice.FullyPaidOnDate );
+							// console.log(invoice.Status );
+							// console.log(invoice.Date );
+							
+							//invoiceTotal[invoice.InvoiceID] = invoice.Total;
+							//invoiceDate[invoiceTotal] = invoice.Date;
+
+							//console.log(invoiceDate[7]);
+							
+							//console.log(invoiceDate);
+			
+			// for (var i = Things.length - 1; i >= 0; i--) {
+			// 	Things[i]
+			// };
+				
+			})
+
+			graph(result)
+		})
+	}
+
+	function graph(data){
+		var chart = c3.generate({
+	    bindto: '#chart',
+	    data: {
+	    	x: 'x',
+	    	columns: [
+	      		['x', '2014-01-01', '2014-01-02', '2014-01-03', '2014-01-04', '2014-01-05', '2014-01-06', '2014-01-07'],
+	      		['Paid'].concat(data.map(function(invoice) { return invoice.AmountPaid })),
+	        	['Due'].concat(data.map(function(invoice) { return invoice.AmountDue })),
+	        	['Total'].concat(data.map(function(invoice) {return invoice.InvoiceTotal})),
+	        //['FullyPaidOnDate '].concat(data.map(function(invoice) { return invoice.FullyPaidOnDate })),
+	        //['data1', 30, 200, 100, 400, 150, 250],
+	        //['data2', 50, 20, 10, 40, 15, 25]
+	        //['data3', 15, 70, 60, 300, 500, 80]
+	      	]
+	    },
+	    
+	    // axis lables
+	    axis: {
+      		y: {
+        		label: { // ADD
+        			text: 'Money (NZD)',
+          			position: 'outer-middle'
+        		}
+      		},
+       		 x: {
+            	type: 'timeseries',
+            	tick: {
+               		format: '%Y-%m-%d'
+            	}	
+        	}
+      	},
+		
+		// colour data
+		colors: {
+            data1: '#ff0000',
+            data2: '#00ff00',
+        }
+		});
+		
+	}
+	$(document).ready(getInvoices); 
+	</script>
+	</head>
+
+	<div id="chart"></div>
+
+	
+
+</html>
