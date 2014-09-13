@@ -10,6 +10,7 @@ var payments;
 //app.use('/test', xerocall(req, res));
 var app = express();
 app.use('/', express.static('InvoiceTracker/'));
+app.use('/GraphTest', express.static('subxero/'));
 app.get("/test", function (req, res) {
 	xero.call('GET', '/Users', null, function(err, json) {
         if(users == null){
