@@ -6,5 +6,8 @@ req.setHeader('Accept', 'text/json');
 req.on('data', function(response){
 	console.log(response);
 });
+req.on('error', function(response){
+	console.log('error=' + response);
+});
 
 req.end();
