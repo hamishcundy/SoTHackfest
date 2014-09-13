@@ -27,13 +27,14 @@
                     console.log('added ' + data.Response.Invoices.Invoice[i]);
                 }
              }
-             invoices.sort(function(a,b){ return a.DueDate < b.DueDate});
+             invoices.sort(function(a,b){ return moment(a.DueDate) < moment(b.DueDate)});
+             var mq = window.matchMedia('@media all and (max-width: 800px)');
              for(var j = 0; j < invoices.length; j++){
                 var date1 = moment(invoices[j].DueDate);
                 var amt = invoices[j].Total;
                 var tickstring;
                 var name = invoices[j].Contact.Name
-                var mq = window.matchMedia('@media all and (max-width: 800px)');
+                
                 if(mq.matches) {
                     // the width of browser is more then 800px
                 } else {
