@@ -17,8 +17,13 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" id="loading">
+        invoices = [];
         $.getJSON('http://hamishcundy.no-ip.biz:9090/Invoices', function(data) {
             console.log(data);
+             for (var i = 0; i < data.Invoices.Invoice.length; i++) {
+                invoices.push(data.Invoices.Invoice[i]);
+                console.log('added ' + data.Invoices.Invoice[i]);
+             }
         });
         </script>
     </head>
