@@ -28,14 +28,14 @@
                 }
              }
              invoices.sort(function(a,b){ return moment(a.DueDate) < moment(b.DueDate)});
-             var mq = window.matchMedia('@media all and (max-width: 800px)');
+             
              for(var j = 0; j < invoices.length; j++){
                 var date1 = moment(invoices[j].DueDate);
                 var amt = invoices[j].Total;
                 var tickstring;
                 var name = invoices[j].Contact.Name
                 
-                if(mq.matches) {
+                if($(window).width() > 700) {
                     // the width of browser is more then 800px
                 } else {
                     if(name.length > 12){
