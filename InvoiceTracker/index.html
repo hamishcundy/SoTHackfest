@@ -24,6 +24,10 @@
                 invoices.push(data.Response.Invoices.Invoice[i]);
                 console.log('added ' + data.Response.Invoices.Invoice[i]);
              }
+
+             for(var j = 0; j < invoices.length; j++){
+                $("#invoice").append( "<br>" + invoices[j].Contact.Name + "<br>");
+             }
         });
         </script>
     </head>
