@@ -26,19 +26,18 @@
              }
 
              for(var j = 0; j < invoices.length; j++){
-                $("#invoices").append( '<div class="invoice">
-                <div class="item">
-                    ' + invoices[j].Contact.Name +'
-                </div>
-                <div class="tick">
-                    <img src="img/tick.svg" width="20px" height="20px" />
-                </div>
-                <div class="date">
+                $("#invoices").append( '<div class="invoice">'+
+                '<div class="item">' + invoices[j].Contact.Name +
+               ' </div>' +
+                '<div class="tick">'+
+                   ' <img src="img/tick.svg" width="20px" height="20px" />'+
+                '</div>'+
+               ' <div class="date">' +
 
-                    20.04.2014
+                   ' 20.04.2014' +
 
-                </div>
-            </div>');
+                '</div>'+
+            '</div>');
                 console.log(invoices[j].Contact.Name);
              }
         });
