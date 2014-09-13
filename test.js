@@ -4,7 +4,7 @@ var express = require('express');
 var xero = new Xero('NJRM3XEXDZDC6LSWFI4J9JREUD1IQK', 'QACOP5VZH6PBTTWFLAQCPPALRSG7JQ', fs.readFileSync('privatekey.pem'));
 //var xerocall = 
 //app.use('/test', xerocall(req, res));
-
+var app = express();
 app.get("/test", function (req, res) {
 	xero.call('GET', '/Users', null, function(err, json) {
         if (err) {
