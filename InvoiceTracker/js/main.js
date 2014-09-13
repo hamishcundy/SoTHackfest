@@ -1,16 +1,16 @@
 
-$( document ).ready(function() {
+// $( document ).ready(function() {
 
 
-$( ".invoice" ).click(function() {
-  $("#dialoguebox").css({ display: 'block' });
-  $("#closebox").css({ display: 'block' });
-});
+// $( ".invoice" ).click(function() {
+//   $("#dialoguebox").css({ display: 'block' });
+//   $("#closebox").css({ display: 'block' });
+// });
 
-$( "#closebox" ).click(function() {
-  $("#dialoguebox").css({ display: 'none' });
-  $("#closebox").css({ display: 'none' });
-});
+// $( "#closebox" ).click(function() {
+//   $("#dialoguebox").css({ display: 'none' });
+//   $("#closebox").css({ display: 'none' });
+// });
 
 
-});
+// });
