@@ -29,14 +29,14 @@
              }
 
              for(var j = 0; j < invoices.length; j++){
-                var date1 = moment(invoices[j].Date);
+                var date1 = moment(invoices[j].DueDate);
                 var amt = invoices[j].Total;
                 $("#invoices").append( '<div class="invoice">'+
                 '<div class="item">' + invoices[j].Contact.Name +
                ' </div>' +
                 '<div class="tick"><img src="img/tick.svg" width="20px" height="20px" /></div>'+
-               '<div class="dateissuedstring">' + date1.format('DD-MM-YYYY') + '</div>' +
-           ' <div class="datepaidstring">' + amt + '</div>' +
+               '<div class="dateissuedstring">' +  amt+ '</div>' +
+           ' <div class="datepaidstring">' + date1.format('DD-MM-YYYY') + '</div>' +
   
             '</div>');
                 console.log(invoices[j].Contact.Name);
