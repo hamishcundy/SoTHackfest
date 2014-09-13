@@ -117,6 +117,7 @@ body{
     opacity: 0.8;
     display: none;
     z-index: 100;
+    text-align: center;
 }
 
 #closebox{
