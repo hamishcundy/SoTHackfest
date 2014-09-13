@@ -30,7 +30,7 @@
 
              for(var j = 0; j < invoices.length; j++){
                 var date1 = moment(invoices[j].Date);
-              
+                var amt = invoices[j].Total;
                 $("#invoices").append( '<div class="invoice">'+
                 '<div class="item">' + invoices[j].Contact.Name +
                ' </div>' +
@@ -43,7 +43,7 @@
                    
                    $("#invoices").append('</div>'+
                '<div class="dateissuedstring">' + date1.format('DD-MM-YYYY') + '</div>' +
-           ' <div class="datepaidstring">' + date1.format('DD-MM-YYYY') + '</div>' +
+           ' <div class="datepaidstring">' + amt + '</div>' +
   
             '</div>');
                 console.log(invoices[j].Contact.Name);
