@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
         <script type="text/javascript" id="loading">
         invoices = [];
         $.getJSON('http://hamishcundy.no-ip.biz:9090/Invoices', function(data) {
@@ -26,6 +27,7 @@
              }
 
              for(var j = 0; j < invoices.length; j++){
+                var date1 = moment(invoices[j].Contact.Name);
                 $("#invoices").append( '<div class="invoice">'+
                 '<div class="item">' + invoices[j].Contact.Name +
                ' </div>' +
@@ -34,7 +36,7 @@
                 '</div>'+
                ' <div class="date">' +
 
-                   invoices[j].Date +
+                   date1.format('DD-MM-YYYY') +
 
                 '</div>'+
             '</div>');
