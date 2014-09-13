@@ -126,9 +126,9 @@ body{
     height: 100%;
     background-color: black;
     opacity: 0.8;
-    display: block;
     z-index: 8;
     text-align: center;
+    display: none;
 }
 
 #dialogue{
@@ -146,7 +146,7 @@ body{
     -webkit-box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.2);
     -moz-box-shadow:    0px 3px 3px 0px rgba(50, 50, 50, 0.2);
     box-shadow:         0px 3px 3px 0px rgba(50, 50, 50, 0.2);
-    display: block;
+    display: none;
 }
 
 .infostyles{
@@ -240,6 +240,7 @@ body{
     top: 0;
     bottom: 0;
     margin-left: 10px;
+    font-size: 1.2em;
 }
 
 .titleright{
@@ -253,6 +254,47 @@ body{
     top: 0;
     bottom: 0;
     right: 10px;
+    font-size: 1.2em;
+}
+
+.datepaidtitle{
+    border: red solid 1px;
+    position: absolute;
+    font-family: 'National-Regular';
+    width: auto;
+    height: 100%;
+    line-height: 30px;
+    margin: auto 0;
+    top: 0;
+    bottom: 0;
+    right: 3%;
+    color: white;
+    float: left;
+    width: 80px;
+    margin-right: 0px;
+    font-size: 1.2em;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.dateissuedtitle{
+    border: red solid 1px;
+    position: absolute;
+    font-family: 'National-Regular';
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    margin: auto 0;
+    top: 0;
+    bottom: 0;
+    right: 31%;
+    margin-right: 0px;
+    color: white;
+    float: left;
+    width: 80px;
+    font-size: 1.2em;
+    padding-left: 2px;
+    padding-right: 2px;    
 }
 
 #graph{
@@ -283,7 +325,7 @@ body{
 #invoicesheader{
     position: relative;
     width: 100%;
-    height: 6%;
+    height: 30px;
     background-color: #12abde;
     color: #ffffff;
     line-height: 100%;
@@ -367,28 +409,47 @@ to {transform: rotate(359deg);}
     margin: auto 0;
     top: 0;
     bottom: 0;
-    right: 35%;
+    left: 80px;
     color: white;
     border-radius: 80px;
     line-height: 30px;
     text-align: center;
 }
 
-.date{
+.datepaidstring{
+    border: solid red 1px;
     position: absolute;
     width: auto;
-    height: 20px;
+    height: 65px;
+    line-height: 65px;
     margin: auto 0;
     top: 0;
     bottom: 0;
     right: 3%;
     color: white;
     float: left;
-
-    max-width: 150px;
+    width: 80px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
-
+.dateissuedstring{
+    border: solid red 1px;
+    position: absolute;
+    width: auto;
+    height: 65px;
+    line-height: 65px;
+    margin: auto 0;
+    top: 0;
+    bottom: 0;
+    right: 26%;
+    margin-right: 5%;
+    color: white;
+    float: left;
+    width: 80px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
 
 
 /* ==========================================================================
