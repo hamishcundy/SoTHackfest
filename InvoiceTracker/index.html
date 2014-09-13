@@ -22,8 +22,10 @@
         $.getJSON('http://hamishcundy.no-ip.biz:9090/Invoices', function(data) {
             console.log(data);
              for (var i = 0; i < data.Response.Invoices.Invoice.length; i++) {
-                invoices.push(data.Response.Invoices.Invoice[i]);
-                console.log('added ' + data.Response.Invoices.Invoice[i]);
+                if(data.Response.Invoices.Invoice[i].Type == 'ACCREC'){
+                    invoices.push(data.Response.Invoices.Invoice[i]);
+                    console.log('added ' + data.Response.Invoices.Invoice[i]);
+                }
              }
 
              for(var j = 0; j < invoices.length; j++){
@@ -32,9 +34,14 @@
                 $("#invoices").append( '<div class="invoice">'+
                 '<div class="item">' + invoices[j].Contact.Name +
                ' </div>' +
-                '<div class="tick">'+
-                   ' <img src="img/tick.svg" width="20px" height="20px" />'+
-                '</div>'+
+                '<div class="tick">';
+                if(invoices[j].status == 'PAID'){
+                    $("#invoices").append(' <img src="img/tick.svg" width="20px" height="20px" />');
+                }else{
+                    $("#invoices").append(' <img src="img/untick.svg" width="20px" height="20px" />');
+                }
+                   
+                   $("#invoices").append('</div>'+
                '<div class="dateissuedstring">' + date1.format('DD-MM-YYYY') + '</div>' +
            ' <div class="datepaidstring">' + date1.format('DD-MM-YYYY') + '</div>' +
   
