@@ -14,11 +14,11 @@ app.get("/test", function (req, res) {
                 return res.json(400, {error: 'Unable to contact Xero'});
             }
             console.log('fetching');
-            users = res.json(200, json);
+            users = json;;
         }else{
             console.log('using cache');
         }
-        return users;
+        return res.json(200, users);
     });
 });
 app.get("/Invoices", function (req, res) {
