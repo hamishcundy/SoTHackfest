@@ -14,5 +14,16 @@ app.get("/test", function (req, res) {
         return res.json(200, json);
     });
 });
+app.get("/Invoices", function (req, res) {
+	xero.call('GET', '/Invoices', null, function(err, json) {
+        if (err) {
+            log.error(err);
+            return res.json(400, {error: 'Unable to contact Xero'});
+        }
+        var file = fs.createWriteStream("test.txt");
+        res.pipe(file);
+        return res.json(200, json);
+    });
+});
 
 app.listen(9090, function () { console.log("up on 9090") });
