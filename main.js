@@ -13,7 +13,7 @@ app.get('/', function(req,res){
     res.sendfile('InvoiceTracker/home.html');
 
 });
-app.use('/', express.static('InvoiceTracker/home'));
+app.use('/static', express.static('InvoiceTracker'));
 app.use('/GraphTest', express.static('subxero/'));
 app.get("/test", function (req, res) {
 	xero.call('GET', '/Users', null, function(err, json) {
