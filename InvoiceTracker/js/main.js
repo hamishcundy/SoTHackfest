@@ -14,7 +14,7 @@ var timeout = setTimeout(function(){
 
 var timeout = setTimeout(function(){
 
-	$("#logo").animate({margin-bottom: '+=50px'})
+	$("#logo").animate({margin-bottom: '+=50px'});
 
 }, 500);
 
