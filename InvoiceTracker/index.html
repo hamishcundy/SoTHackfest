@@ -65,12 +65,23 @@
              }
              $( ".invoice" ).click(function() {
             $("#dialoguebox").css({ display: 'block' });
+            $('#dialoguebox').animate({'opacity':'1.0'}, 300, 'linear');
+            $("#dialogue").css({ display: 'block' });
+            $('#dialogue').animate({'opacity':'1.0'}, 300, 'linear');
             $("#closebox").css({ display: 'block' });
+            $('#closebox').animate({'opacity':'1.0'}, 300, 'linear');
             });
 
             $( "#closebox" ).click(function() {
+            $('#dialoguebox').animate({'opacity':'1.0'}, 300, 'linear');
+            $('#dialogue').animate({'opacity':'1.0'}, 300, 'linear');
+            $('#closebox').animate({'opacity':'1.0'}, 300, 'linear');
+
+            var timeout = setTimeout(function(){
             $("#dialoguebox").css({ display: 'none' });
+            $("#dialogue").css({ display: 'none' });
             $("#closebox").css({ display: 'none' });
+            }, 300);            
             });
         });
         </script>
