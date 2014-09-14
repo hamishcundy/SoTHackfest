@@ -1,0 +1,16 @@
+g.tick text{
+	fill: #3F4958;
+}
+
+g.c3-axis > path, .tick > line {
+	stroke: #3F4958;
+}
+g.c3-axis.c3-axis-y > text {
+	fill: #3F4958;
+}
+g.c3-legend-item > text {
+	fill: #3F4958;
+}
+body{
+	font-family: Helvetica Neue, Helvetica, Arial, Sans;
+}
