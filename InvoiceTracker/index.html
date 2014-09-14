@@ -17,6 +17,180 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
+        <link href="c3.css" rel="stylesheet" type="text/css">
+    <link href="graphformatting.css" rel="stylesheet" type="text/css">
+    <script src="d3.js" charset="utf-8"></script>
+    <script src="c3.min.js"></script>
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+
+    function getDateBounds(invoices) {
+        var min = new Date(invoices[0].Date);
+        var max = new Date(invoices[0].Date);
+        for( var i = 0; i < invoices.length; i++){
+            if (new Date(invoices[i].Date) > max){
+                max = new Date(invoices[i].Date);
+            }
+            if (new Date(invoices[i].Date) < min){
+                min = new Date(invoices[i].Date);
+            }
+        }
+        return {min:min, max:max}
+    }
+
+    function getInvoices ()  {
+        var invoiceTotal = [];
+        var invoiceDate = [];
+
+        $.get("/invoices.json", function (res) {
+            var invoices = res.Response.Invoices.Invoice; 
+            
+            // var invoices = [ 
+            //  { Date: "2014/01/02", Status: "PAID", DueDate:null, AmountPaid: 0, AmountDue:100, Total: 100,  FullyPaidOnDate: "2014/01/03", Type: "ACCPAY" },
+                
+            //  { Date: "2014/01/03",  Status: "PAID", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: "2014/01/04", Type: "ACCPAY"  },
+                
+            //  { Date: "2014/01/04",  Status: "AUTHORISED", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: null, Type: "ACCREC"  },
+                
+            //  { Date: "2014/01/05",  Status: "PAID", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: "2014/01/06", Type: "ACCPAY"  },
+                
+            //  { Date: "2014/01/06",  Status: "AUTHORISED", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: null, Type: "ACCREC"  },
+                
+            //  { Date: "2014/01/07",  Status: "PAID", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: "2014/01/08", Type: "ACCPAY"  },
+                
+            //  { Date: "2014/01/08",  Status: "PAID", DueDate:null, AmountPaid: 10, AmountDue:90, Total: 100, FullyPaidOnDate: "2014/01/09", Type: "ACCREC"  },
+            // ];
+
+            var result = []
+            for(var i = 0; i < invoices.length; i++) {
+                result.push({
+                    Date: invoices[i].Date,
+                    DueDate: invoices[i].DueDate,
+                    AmountPaid: invoices[i].AmountPaid,
+                    AmountDue: invoices[i].AmountDue,
+                    Total: parseFloat(invoices[i].Total),
+                    FullyPaidOnDate: invoices[i].FullyPaidOnDate, 
+                    Status: invoices[i].Status,
+                    Type: invoices[i].Type
+                })
+            }
+            graph(result)
+        })
+    }
+
+    function getGraphPoints (invoices) {
+        var moneyOwed = [];
+        var owedBalance = 0;
+        var balance = 0;
+        var bounds = getDateBounds(invoices)
+        var StartDate = bounds.min.getTime();
+        var DateBlock = (bounds.max.getTime() - StartDate) / 30;
+        var bal = [], dates = []
+        bal[0] = 0;
+        dates[0] = bounds.min;
+        moneyOwed [0] = 0
+        for (var k = 0; k < 30; k++){
+            var startTime = DateBlock * k + StartDate;
+            var stopTime = DateBlock*(k+1) + StartDate;
+
+            for (var i = 0; i < invoices.length; i++){
+                var invoice = invoices[i];
+                var time = new Date(invoice.FullyPaidOnDate).getTime();
+                var issuesdTime = new Date(invoice.Date).getTime();
+
+                if (time >= startTime && time < stopTime){
+                    if (invoice.Status == "PAID"){
+                        if (invoice.Type == "ACCPAY"){
+                            owedBalance = owedBalance + invoices[i].Total;
+                            balance = balance - invoices[i].Total;
+                        }
+                        if (invoice.Type == "ACCREC"){
+                            owedBalance = owedBalance - invoices[i].Total;
+                            balance = balance + invoices[i].Total;
+                        }
+                    }
+                }
+
+                if (issuesdTime >= startTime && issuesdTime < stopTime){
+                    if (invoice.Status == "PAID"){
+                        if (invoice.Type == "ACCPAY"){
+                            owedBalance = owedBalance - invoices[i].Total;
+                        }
+                        if (invoice.Type == "ACCREC"){
+                            owedBalance = owedBalance + invoices[i].Total;
+                        }
+                    }
+                    
+                    if (invoice.Status == "AUTHORISED"){
+                        if (invoice.Type == "ACCPAY"){
+                            owedBalance = owedBalance - invoices[i].Total;
+                        }
+                        if (invoice.Type == "ACCREC"){
+                            owedBalance = owedBalance + invoices[i].Total;
+                        }
+                    }
+                }
+            }
+            bal[k+1] = Math.round(balance * 100)/100;
+            dates[k+1] = new Date(StartDate + DateBlock * (k + 1));
+            moneyOwed[k+1] =  Math.round(owedBalance * 100)/100;
+        }
+        return { balances: bal, dates: dates, moneyOwed: moneyOwed};
+    }
+
+    function graph(invoices){
+        console.log(getGraphPoints(invoices));
+        var points = getGraphPoints(invoices);
+        chart = c3.generate({
+        bindto: '#chart',
+        data: {
+            x: 'x',
+            columns: [
+                ['x'].concat(points.dates),
+                ['CashonHand'].concat(points.balances),
+                ['OutstandingPayments'].concat(points.moneyOwed),
+            ],
+            types: {
+                CashonHand: 'area-spline',
+                OutstandingPayments: 'area-spline'
+            },
+            // colour data
+            colors: {
+                CashonHand: '#80C041',
+                OutstandingPayments: '#117AA2',
+            }
+
+        },
+        
+        zoom: {
+            enabled: true
+        },
+
+        // axis lables
+        axis: {
+            y: {
+                label: { // ADD
+                    text: 'Money (NZD)',
+                    position: 'outer-middle'
+                },
+                tick: {
+                    format: d3.format("$,")
+                }
+            },
+             x: {
+                type: 'timeseries',
+                tick: {
+                    format: '%Y-%m-%d'
+                }   
+            }
+        },
+
+        });
+        
+    }
+    $(document).ready(getInvoices); 
+
+    </script>
         <script type="text/javascript" id="loading">
         invoices = [];
         $.getJSON('http://hamishcundy.no-ip.biz:9090/Invoices', function(data) {
