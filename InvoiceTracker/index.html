@@ -133,7 +133,7 @@
             }
             bal[k+1] = Math.round(balance * 100)/100;
             dates[k+1] = new Date(StartDate + DateBlock * (k + 1));
-            moneyOwed[k+1] =  Math.round(owedBalance * 100)/100;
+            moneyOwed[k+1] =  (Math.round(owedBalance * 100)/100)*-1;
         }
         return { balances: bal, dates: dates, moneyOwed: moneyOwed};
     }
