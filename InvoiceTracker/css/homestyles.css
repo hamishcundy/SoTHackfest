@@ -146,6 +146,10 @@ body{
     left: 0;
     right: 0;
     bottom: 0;
+    margin-bottom: -50px;
+
+    display: none;
+    opacity: 0.0;
 }
 
 #usercontainer{
@@ -189,6 +193,9 @@ textarea{
     height: 20px;
     width: 180px;
     resize: none;
+    color: #4d5057;
+    font-size: 0.9em;
+    font-family: 'HelveticaNeueLTPro-Lt'
 }
 /* ==========================================================================
    Helper classes
