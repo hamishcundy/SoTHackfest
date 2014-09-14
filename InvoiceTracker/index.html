@@ -42,7 +42,7 @@
         var invoiceTotal = [];
         var invoiceDate = [];
 
-        $.get("/invoices.json", function (res) {
+        $.get("/static/invoices.json", function (res) {
             var invoices = res.Response.Invoices.Invoice; 
             
             // var invoices = [ 
