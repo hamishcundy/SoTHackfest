@@ -142,12 +142,12 @@
     function graph(invoices){
         console.log(getGraphPoints(invoices));
         var points = getGraphPoints(invoices);
-        //var ticks;
-        //if($(window).width() > 700) {
-        //    ticks = 10;
-       // }else{
-        //    ticks = 5;
-       // }
+        var ticks;
+        if($(window).width() > 700) {
+            ticks = 30;
+        }else{
+            ticks = 10;
+        }
         chart = c3.generate({
         bindto: '#chart',
         data: {
@@ -187,6 +187,7 @@
              x: {
                 type: 'timeseries',
                 tick: { 
+                    count: ticks,
                     format: '%Y-%m-%d'
                 }   
             }
