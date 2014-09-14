@@ -27,7 +27,7 @@
                     console.log('added ' + data.Response.Invoices.Invoice[i]);
                 }
              }
-             invoices.sort(function(a,b){ return a.Contact.Name) < b.Contact.Name});
+             invoices.sort(function(a,b){ return a.Contact.Name < b.Contact.Name});
              
              for(var j = 0; j < invoices.length; j++){
                 var date1 = moment(invoices[j].DueDate);
