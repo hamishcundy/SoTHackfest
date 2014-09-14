@@ -74,9 +74,21 @@
             });
 
             $( "#closebox" ).click(function() {
-            $('#dialoguebox').animate({'opacity':'1.0'}, 300, 'linear');
-            $('#dialogue').animate({'opacity':'1.0'}, 300, 'linear');
-            $('#closebox').animate({'opacity':'1.0'}, 300, 'linear');
+            $('#dialoguebox').animate({'opacity':'0.0'}, 300, 'linear');
+            $('#dialogue').animate({'opacity':'0.0'}, 300, 'linear');
+            $('#closebox').animate({'opacity':'0.0'}, 300, 'linear');
+
+            var timeout = setTimeout(function(){
+            $("#dialoguebox").css({ display: 'none' });
+            $("#dialogue").css({ display: 'none' });
+            $("#closebox").css({ display: 'none' });
+            }, 300);            
+            });
+
+            $( "#dialoguebox" ).click(function() {
+            $('#dialoguebox').animate({'opacity':'0.0'}, 300, 'linear');
+            $('#dialogue').animate({'opacity':'0.0'}, 300, 'linear');
+            $('#closebox').animate({'opacity':'0.0'}, 300, 'linear');
 
             var timeout = setTimeout(function(){
             $("#dialoguebox").css({ display: 'none' });
