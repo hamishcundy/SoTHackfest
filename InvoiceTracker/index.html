@@ -278,7 +278,7 @@
             $("#dateissued").empty();
             $("#datepaid").empty();
             $("#payee").empty();
-            $("#invnum").empty();
+            
             var json1;
             for(var i = 0; i < invoices.length; i++){
                 if(invoices[i].InvoiceID == this.id){
@@ -290,7 +290,7 @@
             $("#dateissued").append('Issued: <span class="stylesoverride">' + moment(json1.Date).format('DD-MM-YYYY') + '</span>');
             $("#payee").append('Paid: <span class="stylesoverride">' + moment(json1.FullyPaidOnDate).format('DD-MM-YYYY') + '</span>');
             $("#datepaid").append('Due: <span class="stylesoverride">' + moment(json1.DueDate).format('DD-MM-YYYY') + '</span>');
-            $("#invnum").append('Invoice number: <span class="stylesoverride">' + json1.InvoiceNumber + '</span>');
+            
 
             });
 
@@ -360,9 +360,7 @@
             Payee: <span class="stylesoverride">James Avon</span>
         </div>
 
-        <div id="invnum" class="infostyles">
-            Invoice Number: <span class="stylesoverride">James Avon</span>
-        </div>
+       
 
         </div>
 
