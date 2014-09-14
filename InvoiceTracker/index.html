@@ -28,7 +28,7 @@
                 }
              }
              invoices.sort(function(a,b){ 
-                var bool = a.Contact.Name < b.Contact.Name;
+                var bool = a.DueDate < b.DueDate;
                 console.log(bool + ' ' + a.Contact.Name + ' ' + b.Contact.Name);
                 return bool;
             });
