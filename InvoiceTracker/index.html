@@ -53,7 +53,7 @@
                     tickstring = '<div class="tick"><img src="img/untick.svg" width="20px" height="20px" /></div>';
                 }
                 $("#invoices").append( '<div class="invoice">'+
-                '<div class="item">' + name +
+                '<div class="item" id="' + invoices[j].InvoiceId + '">' + name +
                ' </div>' +
                 tickstring+
                '<div class="dateamountstring">$' +  amt+ '</div>' +
@@ -66,6 +66,7 @@
              $( ".invoice" ).click(function() {
             $("#dialoguebox").css({ display: 'block' });
             $("#closebox").css({ display: 'block' });
+            console.log("Id=" + this.id);
             });
 
             $( "#closebox" ).click(function() {
