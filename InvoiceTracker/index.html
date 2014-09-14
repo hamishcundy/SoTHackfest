@@ -200,7 +200,7 @@
     </script>
         <script type="text/javascript" id="loading">
         invoices = [];
-        $.getJSON('http://hamishcundy.no-ip.biz:9090/Invoices', function(data) {
+        $.getJSON('/Invoices', function(data) {
             console.log(data);
              for (var i = 0; i < data.Response.Invoices.Invoice.length; i++) {
                 if(data.Response.Invoices.Invoice[i].Type == 'ACCREC'){
