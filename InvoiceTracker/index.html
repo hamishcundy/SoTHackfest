@@ -52,8 +52,8 @@
                 }else{
                     tickstring = '<div class="tick"><img src="img/untick.svg" width="20px" height="20px" /></div>';
                 }
-                $("#invoices").append( '<div class="invoice">'+
-                '<div class="item" id="1">' + name +
+                $("#invoices").append( '<div class="invoice" id="' + invoices[j].InvoiceId + '">'+
+                '<div class="item">' + name +
                ' </div>' +
                 tickstring+
                '<div class="dateamountstring">$' +  amt+ '</div>' +
