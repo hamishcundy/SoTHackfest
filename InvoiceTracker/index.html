@@ -226,7 +226,9 @@
                 }else{
                     tickstring = '<div class="tick"><img src="img/untick.svg" width="20px" height="20px" /></div>';
                 }
-                $("#invoices").append( '<div class="invoice" id="' + invoices[j].InvoiceId + '">'+
+                var iid = invoices[j].InvoiceId;
+                console.log(iid);
+                $("#invoices").append( '<div class="invoice" id="' + iid + '">'+
                 '<div class="item">' + name +
                ' </div>' +
                 tickstring+
@@ -234,7 +236,7 @@
            ' <div class="dateduestring">' + date1.format('DD-MM-YYYY') + '</div>' +
   
             '</div>');
-                console.log(invoices[j].Contact.Name);
+                //console.log(invoices[j].Contact.Name);
 
              }
 
