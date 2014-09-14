@@ -27,7 +27,11 @@
                     console.log('added ' + data.Response.Invoices.Invoice[i]);
                 }
              }
-             invoices.sort(function(a,b){ return a.Contact.Name < b.Contact.Name});
+             invoices.sort(function(a,b){ 
+                var bool = a.Contact.Name < b.Contact.Name;
+                console.log(bool + ' ' + a.Contact.Name + ' ' + b.Contact.Name);
+                return bool;
+            });
              
              for(var j = 0; j < invoices.length; j++){
                 var date1 = moment(invoices[j].DueDate);
