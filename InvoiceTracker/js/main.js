@@ -1,13 +1,13 @@
 
 $( document ).ready(function() {
 
-$('.spinner').animate({'opacity':'1.0'}, 300, 'linear');
+$(".spinner").animate({'opacity':'1.0'}, 300, 'linear');
 $(".spinner").css({ display: 'block' });
 
 var timeout = setTimeout(function()){
 
 	$("#logo").css({ display: 'block' });
-	$('#logo').animate({'opacity':'1.0'}, 300, 'linear');
+	$("#logo").animate({'opacity':'1.0'}, 300, 'linear');
 
 
 }, 200);
