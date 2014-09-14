@@ -237,7 +237,15 @@
                 console.log(invoices[j].Contact.Name);
 
              }
-             $( ".invoice" ).click(function() {
+
+//Transitions After Jason Files Have Loaded
+
+            $('.spinner').animate({'opacity':'0.0'}, 300, 'linear');
+            var timeout = setTimeout(function(){
+            $(".spinner").css({ display: 'none' });
+            }, 300);        
+
+             $(".invoice").click(function() {
             $("#dialoguebox").css({ display: 'block' });
             $('#dialoguebox').animate({'opacity':'1.0'}, 300, 'linear');
             $("#dialogue").css({ display: 'block' });

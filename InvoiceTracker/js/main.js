@@ -1,16 +1,7 @@
 
-// $( document ).ready(function() {
+$( document ).ready(function() {
 
+$('.spinner').animate({'opacity':'1.0'}, 300, 'linear');
+$(".spinner").css({ display: 'block' });
 
-// $( ".invoice" ).click(function() {
-//   $("#dialoguebox").css({ display: 'block' });
-//   $("#closebox").css({ display: 'block' });
-// });
-
-// $( "#closebox" ).click(function() {
-//   $("#dialoguebox").css({ display: 'none' });
-//   $("#closebox").css({ display: 'none' });
-// });
-
-
-// });
+});
