@@ -205,6 +205,10 @@ body{
     background-color: #ffffff;
 }
 
+#invnum{
+    background-color: #f5f6f7;
+}
+
 #closebox{
     position: absolute;
     margin-top: -15px;
