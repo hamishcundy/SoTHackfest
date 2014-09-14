@@ -269,8 +269,22 @@
             $("#closebox").css({ display: 'block' });
             $('#closebox').animate({'opacity':'1.0'}, 300, 'linear');
             console.log("Id=" + this.id);
-            
-
+            $("#name").empty();
+            $("#price").empty();
+            $("#dateissued").empty();
+            $("#datepaid").empty();
+            $("#payee").empty();
+            var json1;
+            for(var i = 0; i < invoices.length; i++){
+                if(invoices[i].InvoiceID == this.id){
+                    json1 = invoices[i];
+                }
+            }
+            $("#name").append('Name: <span class="stylesoverride">' + json1.Contact.Name + '</span>');
+            $("#price").append('Price: <span class="stylesoverride">$' + json1.Total + '</span>');
+            $("#dateissued").append('Issued: <span class="stylesoverride">' + moment(json1.Date).format('DD-MM-YYYY') + '</span>');
+            $("#datepaid").append('Paid: <span class="stylesoverride">' + moment(json1.FullyPaidOnDate).format('DD-MM-YYYY') + '</span>');
+            $("#payee").append('Name: <span class="stylesoverride">' + json1.Contact.Name + '</span>');
 
             });
 
