@@ -402,6 +402,7 @@ to {transform: rotate(359deg);}
 }
 
 .tick{
+/*    border: solid red 1px;*/
     position: absolute;
     background-color: #4d5057;
     width: 30px;
