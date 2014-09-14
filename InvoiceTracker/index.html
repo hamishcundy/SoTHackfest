@@ -245,7 +245,11 @@
             $('.spinner').animate({'opacity':'0.0'}, 300, 'linear');
             var timeout = setTimeout(function(){
             $(".spinner").css({ display: 'none' });
-            }, 300);        
+            }, 300);
+
+            $("#invoices").css({ display: 'block' });
+            $('#invoices').animate({'opacity':'1.0'}, 300, 'linear');
+
 
              $(".invoice").click(function() {
             $("#dialoguebox").css({ display: 'block' });
@@ -339,7 +343,7 @@
 
             <div id="graph">
                 <div id="graphstyles">
-                    <div id="chart"></div>
+                    <div id="chart" class="chartstyles"></div>
                 </div>  
 
             </div>

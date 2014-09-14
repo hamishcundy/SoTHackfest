@@ -120,6 +120,11 @@ body{
     font-family: HelveticaNeueLTPro-Lt;
 }
 
+.chartstyles{
+    width: 100%;
+    height: 100%;
+}
+
 #dialoguebox{
     position: absolute;
     width: 100%;
@@ -362,6 +367,10 @@ body{
     width: 100%;
     background-color: #3d4046;
     overflow: auto;
+
+    display: none;
+    opacity: 0.0;
+
 }
 
 .spinner {
