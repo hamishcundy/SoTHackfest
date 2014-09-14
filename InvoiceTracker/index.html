@@ -143,10 +143,13 @@
         console.log(getGraphPoints(invoices));
         var points = getGraphPoints(invoices);
         var ticks;
-        if($(window).width() > 700) {
+        var width = $(window).width();
+        if(width > 1000) {
             ticks = 30;
+        }else if(width > 700){
+            ticks = 12;
         }else{
-            ticks = 10;
+            ticks = 8;
         }
         chart = c3.generate({
         bindto: '#chart',
