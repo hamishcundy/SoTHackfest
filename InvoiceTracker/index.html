@@ -283,8 +283,8 @@
             $("#name").append('Name: <span class="stylesoverride">' + json1.Contact.Name + '</span>');
             $("#price").append('Price: <span class="stylesoverride">$' + json1.Total + '</span>');
             $("#dateissued").append('Issued: <span class="stylesoverride">' + moment(json1.Date).format('DD-MM-YYYY') + '</span>');
-            $("#datepaid").append('Paid: <span class="stylesoverride">' + moment(json1.FullyPaidOnDate).format('DD-MM-YYYY') + '</span>');
-            $("#payee").append('Name: <span class="stylesoverride">' + json1.Contact.Name + '</span>');
+            $("#payee").append('Paid: <span class="stylesoverride">' + moment(json1.FullyPaidOnDate).format('DD-MM-YYYY') + '</span>');
+            $("#datepaid").append('Due: <span class="stylesoverride">' + moment(json1.DueDate).format('DD-MM-YYYY') + '</span>');
 
             });
 
