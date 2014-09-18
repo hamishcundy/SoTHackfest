@@ -5,6 +5,8 @@ Summer of Tech Hackfest Project
 
 SubXero - A cashflow visuliser for Xero, using the Xero API
 
+![alt tag](https://raw.github.com/hamishcundy/sothackfest/master/nexus4_screenshot.png)
+
 ###Xero account credentials
 Email: hamishcundy@gmail.com
 Password: sot2014ps
